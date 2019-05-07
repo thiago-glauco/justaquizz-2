@@ -8,28 +8,28 @@ const appDiv = document.getElementById('app');
 appDiv.innerHTML = `<h1>JS Starter Quiz</h1>`;
 
 //creating the app
-let btn;
-const buttonsTemplate = ` <input type="button" id="btn${btn}" value="Send Aswer">
-  <div id="answer1">`
 
-const question4 = new Question(
-  4, 'bla bla bla', ['1', '2', '3']
-);
-
+let questionsTemplate = ``;
 for (let questionData of QUESTIONS ) {
   let question = new Question( questionData );
+  let numOfOptions = question.options.length;
   console.log(question);
+  questionsTemplate += `
+  <div class="question" id="question${question.questionId}">
+    <p>Question ${question.questionId}: ${question.sentence}</p>
+    <p>Choose an answer </p>
+    <input type="radio" name="answer${question.questionId}" value="a" id="a" >a. JavaScript does not support functions.<br>
+    <input type="radio" name="answer${question.questionId}" value="b" id="b">b. A chunk of code that is associated to a name.<br>
+    <input type="radio" name="answer${question.questionId}" value="c" id="c">c. Codes that execute a mathematical function.<br>
+    <input type="button" id="btn${question.questionId}" value="Send Aswer">
+    <div id="answer${question.questionId}"></div>
+  </div>
+  `
 }
+console.log(questionsTemplate);
 
-//Generate 4
-document.getElementById('question4').innerHTML = `
-  <p>Question ${question4.questionNumber}:${question4.sentence}</p>
-  <p>Choose an answer </p>
-  <input type="radio" name="answer${question4.questionNumber}" value="a">a. ${question4.options[0]}.<br>
-  <input type="radio" name="answer${question4.questionNumber}" value="b">b. ${question4.options[1]}.<br>
-  <input type="radio" name="answer${question4.questionNumber}" value="c">c. ${question4.options[2]}<br>
-  <input type="button" id="btn${question4.questionNumber}" value="Send Aswer">
-  <div id="answer3"></div>`;
+const questionsContainer = document.getElementById('questionsContainer');
+questionsContainer.innerHTML = questionsTemplate;
 
 //Just getting the buttons
 const btn1 = document.getElementById('btn1');
