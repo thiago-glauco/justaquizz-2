@@ -10,14 +10,19 @@ appDiv.innerHTML = `<h1>JS Starter Quiz</h1>`;
 //creating the app
 
 let questionsTemplate = ``;
+
+//The questions will be written inside the question container
 const questionsContainer = document.getElementById('questionsContainer');
 const questionObjects = [];
 
+//Creating as many questions as I have in a datasource
 for (let questionData of QUESTIONS ) {
   let question = new Question( questionData );
   questionObjects.push(question)
   let numOfOptions = question.options.length;
   console.log(question);
+
+  //Usign a template I can create as many questions as needed without coding infinity HTML...
   questionsTemplate = `
   <div class="question" id="question${question.questionId}">
     <p>Question ${question.questionId}: ${question.sentence}</p>
