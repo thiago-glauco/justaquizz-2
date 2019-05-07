@@ -32,3 +32,6 @@ h1, h2 {
 p {
   padding: 5px;
 }
+input:hover{
+  box-shadow: 3px 3px 3px grey;
+}

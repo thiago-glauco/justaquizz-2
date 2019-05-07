@@ -27,10 +27,10 @@ for (let questionData of QUESTIONS ) {
   <div class="question" id="question${question.questionId}">
     <p>Question ${question.questionId}: ${question.sentence}</p>
     <p>Choose an answer </p>
-    <input type="radio" name="answer${question.questionId}" value="a" id="a" >a. JavaScript does not support functions.<br>
-    <input type="radio" name="answer${question.questionId}" value="b" id="b">b. A chunk of code that is associated to a name.<br>
-    <input type="radio" name="answer${question.questionId}" value="c" id="c">c. Codes that execute a mathematical function.<br>
-    <button id="${question.questionId}" value="Send Aswer">Send Aswer</button>
+    <input type="radio" name="answer${question.questionId}" value="a" id="a" >${question.options.opts[0].text}<br>
+    <input type="radio" name="answer${question.questionId}" value="b" id="b">${question.options.opts[1].text}<br>
+    <input type="radio" name="answer${question.questionId}" value="c" id="c">${question.options.opts[2].text}<br>
+    <input type="button" id="${question.questionId}" value="Send Aswer">
     <div id="answer${question.questionId}"></div>
   </div>
   `
