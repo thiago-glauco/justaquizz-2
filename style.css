@@ -1,0 +1,34 @@
+h1, h2 {
+  font-family: Lato;
+}
+
+.question {
+  border: 2px solid grey;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px auto;
+  max-width: 90%;
+  width: 800px;
+}
+
+.correct {
+  background-color: lightgreen;
+  border: 2px solid darkgreen;
+  width: 600px;
+  max-width: 90%;
+  margin: 10px auto;
+  box-shadow: 5px 5px 5px green;
+}
+.wrong {
+  background-color: orangered;
+  border: 2px solid red;
+  width: 600px;
+  max-width: 90%;
+  margin: 10px auto;
+  font-style: oblique;
+  box-shadow: 5px 5px 5px purple;
+}
+
+p {
+  padding: 5px;
+}
