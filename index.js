@@ -51,7 +51,7 @@ function checkAnswer( $event ) {
   const answers = document.getElementsByName('answer' + clickedObject.questionId.toString() );
   const answer = document.getElementById('answer' + clickedObject.questionId.toString());
   if (answers[clickedObject.getCorrectAnswer()].checked){
-   answer.innerHTML = `<p class="correct">You are right! JavaScript is a High Level language, so it can not be a low level language!<\p>`
+   answer.innerHTML = `<p class="correct"><b>That is right!</b><\p>`
   }
   else {
     answer.innerHTML = wrongMessage;
