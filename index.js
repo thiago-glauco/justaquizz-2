@@ -37,6 +37,8 @@ const btn2 = document.getElementById('btn2');
 const btn3 = document.getElementById('btn3');
 const wrongMessage = `<p class="wrong"><b>It is not right!</b>Try again!<\p>`;
 
+
+/*
 //Question 1
 btn1.onclick = function() {
   const answers = document.getElementsByName('answer1');
@@ -81,6 +83,7 @@ btn3.onclick = function() {
     }
   }
 }
+*/
 
 
 
