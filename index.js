@@ -10,34 +10,50 @@ appDiv.innerHTML = `<h1>JS Starter Quiz</h1>`;
 //creating the app
 
 let questionsTemplate = ``;
+const questionsContainer = document.getElementById('questionsContainer');
+const questionObjects = [];
+const wrongMessage = `<p class="wrong"><b>It is not right!</b>Try again!<\p>`;
+
 for (let questionData of QUESTIONS ) {
   let question = new Question( questionData );
+  questionObjects.push(question)
   let numOfOptions = question.options.length;
   console.log(question);
-  questionsTemplate += `
+  questionsTemplate = `
   <div class="question" id="question${question.questionId}">
     <p>Question ${question.questionId}: ${question.sentence}</p>
     <p>Choose an answer </p>
     <input type="radio" name="answer${question.questionId}" value="a" id="a" >a. JavaScript does not support functions.<br>
     <input type="radio" name="answer${question.questionId}" value="b" id="b">b. A chunk of code that is associated to a name.<br>
     <input type="radio" name="answer${question.questionId}" value="c" id="c">c. Codes that execute a mathematical function.<br>
-    <input type="button" id="btn${question.questionId}" value="Send Aswer">
+    <button id="${question.questionId}" value="Send Aswer">Send Aswer</button>
     <div id="answer${question.questionId}"></div>
   </div>
   `
+  questionsContainer.innerHTML += questionsTemplate;
 }
-console.log(questionsTemplate);
-
-const questionsContainer = document.getElementById('questionsContainer');
-questionsContainer.innerHTML = questionsTemplate;
-
-//Just getting the buttons
-const btn1 = document.getElementById('btn1');
-const btn2 = document.getElementById('btn2');
-const btn3 = document.getElementById('btn3');
-const wrongMessage = `<p class="wrong"><b>It is not right!</b>Try again!<\p>`;
+for(let questionobject of questionObjects){
+  document.getElementById(questionobject.questionId).addEventListener('click', checkAnswer);
+}
 
 
+
+function checkAnswer( $event ) {
+  let clickedObject = questionObjects.filter( ( obj ) => { return obj.questionId === Number($event.target.id) } )[0]
+  console.log(clickedObject);
+  console.log(clickedObject.getCorrectAnswer());  
+  const answers = document.getElementsByName('answer' + clickedObject.questionId.toString() );
+  const answer = document.getElementById('answer' + clickedObject.questionId.toString());
+  if (answers[clickedObject.getCorrectAnswer()].checked){
+   answer.innerHTML = `<p class="correct">You are right! JavaScript is a High Level language, so it can not be a low level language!<\p>`
+  }
+  else {
+    answer.innerHTML = wrongMessage;
+    for( let answer of answers ) {
+      answer.checked = false;
+    }
+  }
+}
 /*
 //Question 1
 btn1.onclick = function() {
